@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Converter {
 
@@ -21,10 +22,18 @@ public class Converter {
     List<List<String>> collectionDates = CsvReader.parseCsv(Path
         .of("csv/paper.csv"));
     System.out.println(collectionDates);
-    HashMap<String, List<String>> dateMap = new HashMap<>();
+    HashMap<String, List<LocalDate>> dateMap = new HashMap<>();
     for (List<String> collection : collectionDates) {
-      dateMap.put(collection.get(0), Arrays.asList(collection.get(1).split(",")).stream().map(
-          LocalDate::parse));
+      dateMap
+          .put(
+              collection.get(0),
+              Arrays.asList(collection
+              .get(1)
+              .split(","))
+              .stream()
+              .map(LocalDate::parse)
+              .collect(Collectors.toUnmodifiableList()
+              ));
     }
     System.out.println(dateMap);
 
