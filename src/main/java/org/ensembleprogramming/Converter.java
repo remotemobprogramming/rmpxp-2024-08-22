@@ -3,6 +3,7 @@ package org.ensembleprogramming;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -31,7 +32,7 @@ public class Converter {
               .get(1)
               .split(","))
               .stream()
-              .map(LocalDate::parse)
+              .map(text -> LocalDate.parse(text, DateTimeFormatter.ofPattern("dd.MM.uuuu") ))
               .collect(Collectors.toUnmodifiableList()
               ));
     }
