@@ -16,6 +16,14 @@ public class Converter {
       map.put(district.get(0), district.get(1));
     }
     System.out.println(map);
+    List<List<String>> collectionDates = CsvReader.parseCsv(Path
+        .of("csv/paper.csv"));
+    System.out.println(collectionDates);
+    HashMap<String, String> dateMap = new HashMap<>();
+    for (List<String> collection : collectionDates) {
+      dateMap.put(collection.get(0), collection.get(1));
+    }
+    System.out.println(dateMap);
   }
 
 
