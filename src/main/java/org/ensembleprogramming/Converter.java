@@ -2,6 +2,7 @@ package org.ensembleprogramming;
 
 import java.io.IOException;
 import java.nio.file.Path;
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -22,9 +23,12 @@ public class Converter {
     System.out.println(collectionDates);
     HashMap<String, List<String>> dateMap = new HashMap<>();
     for (List<String> collection : collectionDates) {
-      dateMap.put(collection.get(0), Arrays.asList(collection.get(1).split(",")));
+      dateMap.put(collection.get(0), Arrays.asList(collection.get(1).split(",")).stream().map(
+          LocalDate::parse));
     }
     System.out.println(dateMap);
+
+
   }
 
 
