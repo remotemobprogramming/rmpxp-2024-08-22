@@ -2,6 +2,7 @@ package org.ensembleprogramming;
 
 import java.io.IOException;
 import java.nio.file.Path;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -19,9 +20,9 @@ public class Converter {
     List<List<String>> collectionDates = CsvReader.parseCsv(Path
         .of("csv/paper.csv"));
     System.out.println(collectionDates);
-    HashMap<String, String> dateMap = new HashMap<>();
+    HashMap<String, List<String>> dateMap = new HashMap<>();
     for (List<String> collection : collectionDates) {
-      dateMap.put(collection.get(0), collection.get(1));
+      dateMap.put(collection.get(0), Arrays.asList(collection.get(1).split(",")));
     }
     System.out.println(dateMap);
   }
